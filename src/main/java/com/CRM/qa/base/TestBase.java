@@ -32,7 +32,8 @@ public class TestBase {
  }
 	
 public static void initialization() {
-	                WebDriverManager.chromedriver().setup();
+	              if( Browsername.equals("chrome"){
+			      WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--no-sandbox");
 			options.addArguments("--disable-dev-shm-usage");
