@@ -32,7 +32,7 @@ public class TestBase {
  }
 	
 public static void initialization() {
-	              if( Browsername.equals("chrome")){
+	              
 			      WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--no-sandbox");
@@ -41,15 +41,7 @@ public static void initialization() {
 			driver = new ChromeDriver(options);
 			driver.navigate().to("https://www.google.com");
 			driver.manage().window().maximize();
-		
-	 }else if(Browsername.equals("firefox")) 
-	 { System.setProperty("webdriver.gecko.driver", "C://drivers//geckodriver//geckodriver.exe");
-	 driver=new FirefoxDriver();
-		 
-	 }
-	 
-	 driver.manage().window().maximize();
-	 driver.manage().deleteAllCookies();
+			 driver.manage().deleteAllCookies();
 	 driver.manage().timeouts().pageLoadTimeout(TestUlit.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 	 driver.manage().timeouts().implicitlyWait(TestUlit.IMPLICIT_WAIT, TimeUnit.SECONDS);
 	 driver.get(prop.getProperty("url"));
