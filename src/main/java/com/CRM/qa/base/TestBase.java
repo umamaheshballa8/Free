@@ -32,7 +32,7 @@ public class TestBase {
  }
 	
 public static void initialization() {
-	              if( Browsername.equals("chrome"){
+	              if( Browsername.equals("chrome")){
 			      WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--no-sandbox");
