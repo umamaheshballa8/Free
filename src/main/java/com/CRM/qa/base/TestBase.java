@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.online.Downloader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -31,10 +32,14 @@ public class TestBase {
  }
 	
 public static void initialization() {
-	 String Browsername=prop.getProperty("browser");
-	 if(Browsername.equals("chrome")) {
-		 System.setProperty("webdriver.chrome.driver", "C://drivers//chromedriver//chromedriver.exe");
-		 driver=new ChromeDriver();
+	                WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--headless");
+			driver = new ChromeDriver(options);
+			driver.navigate().to("https://www.google.com");
+			driver.manage().window().maximize();
 		
 	 }else if(Browsername.equals("firefox")) 
 	 { System.setProperty("webdriver.gecko.driver", "C://drivers//geckodriver//geckodriver.exe");
